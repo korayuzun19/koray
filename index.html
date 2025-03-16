@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Accordion</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #cdb8dd url(background-pattern-desktop.svg) no-repeat center top  ;
+            background-size: contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            position: relative;
+            max-width: 100%;
+            
+        }
+        .background-star {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: url('/mnt/data/icon-star.svg') no-repeat center center;
+            background-size: contain;
+        }
+        .faq-container {
+            background: white;
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+          
+        }
+        .faq-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .faq-header span {
+            color: purple;
+            margin-right: 10px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 5px;
+            color: #666;
+        }
+        .faq-question.active + .faq-answer {
+            display: block;
+                  
+        }
+        
+        .plus  {     
+            background-image: url(icon-plus.svg);
+            width: 20px; /* Artı işaretinin genişliğini ayarla */  
+            height: 20px; /* Artı işaretinin yüksekliğini ayarla */
+            background-size: contain; /* Resmi sığdır */
+            background-repeat: no-repeat; /* Tekrar etme */
+            color: transparent; /* Metni gizle */
+            }
+    </style>
+</head>
+<body>
+    <div class="background-star"></div>
+    <div class="faq-container">
+        <div class="faq-header"><span>✦</span> FAQs</div>
+        <div class="faq-item">
+            <div class="faq-question">What is Frontend Mentor, and how will it help me? <span class="plus">+</span></div>
+            
+
+    
+            <div class="faq-answer">Frontend Mentor offers realistic coding challenges to help developers improve their frontend skills.</div>
+          
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is Frontend Mentor free? <span class="plus">+</span></div>
+            <div class="faq-answer">Yes, it has both free and premium challenges.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I use Frontend Mentor projects in my portfolio? <span class="plus">+</span></div>
+            <div class="faq-answer">Absolutely! They are great for showcasing your skills.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How can I get help if I'm stuck on a challenge? <span class="plus">+</span></div>
+            <div class="faq-answer">You can ask in the Frontend Mentor community or check the discussions.</div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== item) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.display = 'none';
+                    }
+                });
+                item.classList.toggle('active');
+                let answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
